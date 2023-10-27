@@ -33,17 +33,17 @@ function Form() {
         updateTextAreaSize(textAreaRef.current)
     }, [inputValue])
 
-        if (session.status !== "authenticated") return null
+    if (session.status !== "authenticated") return null
 
-        const trpcUtils = api.useContext()
+    const trpcUtils = api.useContext()
     const createTweet = api.tweet.create.useMutation({
         onSuccess: (newTweet) => {
             setInputValue("");
 
-            if (session.status !== "authenticated") return 
+            if (session.status !== "authenticated") return
 
             trpcUtils.tweet.infiniteFeed.setInfiniteData({}, (oldData) => {
-                if(oldData == null || oldData.pages[0] == null) return
+                if (oldData == null || oldData.pages[0] == null) return
 
                 const newCacheTweet = {
                     ...newTweet,
@@ -69,10 +69,10 @@ function Form() {
         }
     })
 
-    function handleSubmit(e: FormEvent){
+    function handleSubmit(e: FormEvent) {
         e.preventDefault()
 
-        createTweet.mutate({ content: inputValue})
+        createTweet.mutate({ content: inputValue })
     }
 
     return (

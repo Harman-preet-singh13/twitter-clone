@@ -19,7 +19,7 @@ export const tweetRouter = createTRPCRouter({
         limit: z.number().optional(),
         cursor: z.object({ id: z.string(), createdAt: z.date() }).optional()
       })
-    )    .query(
+    ).query(
       async ({ input: { limit = 10, userId, cursor }, ctx }) => {
         return await getInfiniteTweets({
           limit,

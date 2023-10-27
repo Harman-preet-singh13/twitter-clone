@@ -21,7 +21,6 @@ const MyApp: AppType<{ session: Session | null }> = ({
         <div className="min-h-screen flex-grow border-x">
           <Component {...pageProps} />
         </div>
-
       </div>
 
     </SessionProvider>

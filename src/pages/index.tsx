@@ -4,6 +4,7 @@ import { api } from "~/utils/api";
 import { useState } from "react"
 import { useSession } from "next-auth/react";
 
+
 const TABS = ["Recent", "Following"] as const;
 
 export default function Home() {
@@ -14,9 +15,7 @@ export default function Home() {
   return (
     <>
       <header className="sticky top-0 z-10 border-b bg-white pt-2">
-        <h1 className="mb-2 px-4 text-lg font-bold">
-          Home
-        </h1>
+        
         {/* Recent and Following Tabs */}
         {session.status === "authenticated" && (
           <div className="flex">
